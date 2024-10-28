@@ -1,0 +1,28 @@
+@import "./responsive.scss";
+.layout{
+    // background-color: brown;
+    height: 100vh;
+    // max-width: 1300px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 25px;
+    padding-right: 25px;
+    display: flex;
+    flex-direction: column;
+
+    @include largeFun{
+        background-color: rgb(245, 245, 245);
+    }
+    @include mediumFun{
+        background-color: rgb(245, 245, 245);
+    }
+    @include smallFun{
+        background-color: rgb(245, 245, 245);
+    }
+    .content{
+        background-color: coral;
+        // alt way 
+        // flex: 1;
+        height: calc(100vh - 100px);
+    }
+}
