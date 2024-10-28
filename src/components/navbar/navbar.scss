@@ -1,119 +1,134 @@
 @import "../../responsive.scss";
-nav{
-    height: 100px;
+
+nav {
+  height: 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  a {
+    transition: all 0.3s ease;
+    color: white; // Set link color to white
+    &:hover {
+      scale: 1.05;
+      text-decoration: underline; // Add underline on hover for better visibility
+    }
+
+    @include smallFun {
+      display: none;
+    }
+  }
+
+  .leftSide {
+    flex: 1;
+    background-color: rgb(0, 9, 70);
+    height: 100%;
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    padding-left: 30px;
 
-    a{
-        transition: all 0.3s ease;
-        &:hover{
-            scale: 1.05;
-        }
-
-        @include smallFun{
-            display: none;
-        }
+    .ourLogo {
+      height: 80px;
+      width: 85px;
     }
-    .leftSide{
-        flex: 1;
-        background-color: rgb(0, 9, 70);
-        height: 100%;
-        display: flex;
-        align-items:center;
-        padding-left: 30px;
+  }
 
-        .ourLogo{
-            height: 80px;
-            width: 85px;
-        }
+  .midSide {
+    flex: 2;
+    background-color: rgb(0, 9, 70);
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+  }
+
+  .rightSide {
+    flex: 1;
+    background-color: rgb(0, 9, 70);
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 30px;
+
+    .signUp {
+      color: rgb(0, 9, 70);
+      background-color: rgb(255, 222, 0);
+      border-radius: 5px;
+      padding: 12px 24px; // Added padding for better button size
     }
-    
-    .leftSide a, .midSide a, .rightSide a{
+
+    a {
+      padding: 12px 24px;
+      margin: 20px;
+    }
+
+    .userInfo {
+      display: flex;
+      align-items: center;
+      margin-right: 20px; // Add margin to space out from the edge
+      color: white; // Ensure text color is white
+
+      .greeting {
+        margin-right: 10px; // Space between greeting and logout button
+      }
+
+      .logoutBtn {
+        background-color: rgb(232 19 19 / 84%);
         color: white;
-    }
-    
-    .midSide{
-        flex: 2;
-        background-color: rgb(0, 9, 70);
-        height: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 40px;
-    }
-    
-    
-    .rightSide{
-        flex: 1;
-        background-color: rgb(0, 9, 70);
-        height: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: flex-end;
-        padding-right: 30px;
-        
-    
-        .signUp{
-            color: rgb(0, 9, 70);;
-        background-color: rgb(255, 222, 0);
         border-radius: 5px;
-        }
-
-    
-        a{
-            padding: 12px 24px;
-            margin: 20px;
-            
-        }
-
-        .menuPic{
-            display: none;
-            z-index: 70;
-            
-            img:hover{
-             cursor: pointer;
-            }
-
-             // if screen size is small, then we would display it
-             @include smallFun{
-                display: inline;
-            }
-        }
-        .menuSection{
-            position: absolute;
-            top: 0;
-            right: -50%;
-            background-color:rgb(0, 9, 70);
-            color: white;
-            height: 100vh;
-            width: 50%;
-            // z-index: 69;
-            transition: all 0.6s ease;
-            display: flex;
-            // for vertical display, we gonna set flex direction as column
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            font-size: 22px;
-    
-            &.active{
-                right: 0;
-            }
-            @include smallFun{
-                a{
-                    display: initial;
-                }
-            }
-        }
+        padding: 12px 24px;
+        transition: all 0.3s ease;
+        cursor: pointer;
+      }
     }
 
-    @include smallFun{
-       .leftSide ,.rightSide ,.midSide{
-        background-color: rgb(191, 179, 2);
-       }
+    .menuPic {
+      display: none;
+      z-index: 70;
+
+      img:hover {
+        cursor: pointer;
+      }
+
+      @include smallFun {
+        display: inline;
+      }
     }
+
+    .menuSection {
+      position: absolute;
+      top: 0;
+      right: -50%;
+      background-color: rgb(0, 9, 70);
+      color: white;
+      height: 100vh;
+      width: 50%;
+      transition: all 0.6s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+
+      &.active {
+        right: 0;
+      }
+
+      @include smallFun {
+        a {
+          display: initial;
+        }
+      }
+    }
+  }
+
+  @include smallFun {
+    .leftSide,
+    .rightSide,
+    .midSide {
+      background-color: rgb(191, 179, 2);
+    }
+  }
 }
-
-
-

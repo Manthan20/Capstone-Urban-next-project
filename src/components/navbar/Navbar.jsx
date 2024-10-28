@@ -1,42 +1,45 @@
-import "./navbar.scss"
-import "../../responsive.scss"
-import { useState } from "react";
+import "./navbar.scss";
+import { Link, useNavigate } from "react-router-dom"; // Import useNavigate for redirection
+import { useAuth } from "../../context/AuthContext";
 
-function Navbar(){
-    const [openMenu, setOpenMenu] = useState(false)
-return(
+function Navbar() {
+  const { isLoggedIn, username, logout } = useAuth();
+  const navigate = useNavigate(); // Hook for navigation
+
+  const handleLogout = () => {
+    logout(); // Call the logout function
+    navigate("/login"); // Redirect to login page after logging out
+  };
+
+  return (
     <nav>
-        <div className="leftSide">
-            <img className="ourLogo" src="/urbanNestLogo.png" alt="logo" />
-            <a href="/">
-                Urban Nest
-            </a>
-           
-        </div>
-
-        <div className="midSide">
-            <a href="/">Home</a>
-            <a href="/">About</a>
-            <a href="/">Contact</a>
-            <a href="/">Agents</a>
-        </div>
-
-        <div className="rightSide">
-        <a href="/">Sign In</a>
-        <a className="signUp" href="/">Sign Up</a>
-        <div className="menuPic">
-            <img src="/icons8-menu-36.png" alt="menuPic1" onClick={() => setOpenMenu((prev) => !prev)} />
-        </div>
-        <div className={openMenu ? "menuSection active" : "menuSection"}>
-            <a href="/">Home</a>
-            <a href="/">About</a>
-            <a href="/">Contact</a>
-            <a href="/">Agents</a>
-            <a href="/">Sign In</a>
-            <a href="/">Sign Up</a>
-        </div>
-        </div>
+      <div className="leftSide">
+        <Link to="/">Urban Nest</Link>
+      </div>
+      <div className="midSide">
+        <Link to="/">Home</Link>
+        <Link to="/">About</Link>
+        <Link to="/">Contact</Link>
+        <Link to="/">Agents</Link>
+      </div>
+      <div className="rightSide">
+        {isLoggedIn ? (
+          <div className="userInfo">
+            <button className="logoutBtn" onClick={handleLogout}>
+              Logout
+            </button>
+          </div>
+        ) : (
+          <>
+            <Link to="/login">Sign In</Link>
+            <Link className="signUp" to="/signup">
+              Sign Up
+            </Link>
+          </>
+        )}
+      </div>
     </nav>
-)
+  );
 }
+
 export default Navbar;
