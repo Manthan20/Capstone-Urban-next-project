@@ -1,0 +1,42 @@
+.admin-dashboard {
+    padding: 20px;
+    background-color: #f8f9fa; // Light background for the dashboard
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  h1 {
+    text-align: center;
+    color: #343a40; // Dark text for better readability
+    margin-bottom: 20px;
+  }
+  
+  .user-table {
+    width: 100%;
+    border-collapse: collapse; // Remove space between table cells
+    margin-top: 20px;
+  
+    th, td {
+      padding: 12px;
+      text-align: left;
+      border-bottom: 1px solid #dee2e6; // Light border for table rows
+    }
+  
+    th {
+      background-color: #007bff; // Bootstrap primary color
+      color: #ffffff; // White text for headers
+    }
+  
+    tr:hover {
+      background-color: #f1f1f1; // Light gray background on hover
+    }
+  
+    // Responsive styles
+    @media (max-width: 768px) {
+      font-size: 14px; // Smaller font size for mobile devices
+      th, td {
+        padding: 10px; // Smaller padding
+      }
+    }
+  }
+  

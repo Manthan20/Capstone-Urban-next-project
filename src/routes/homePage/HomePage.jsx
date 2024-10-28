@@ -1,39 +1,39 @@
-
+import Search from "../../components/searchbar/Search";
 import "./homePage.scss";
-
 function HomePage() {
   return (
-    <div className="homePage">
-      <div className="textContainer">
-        <div className="wrapper">
-          <h1 className="title">Find your dream locality now!</h1>
-          <p>
-           iure est nulla animi consequatur
-            facilis id pariatur fugit quos laudantium temporibus dolor ea
-            repellat provident impedit!
-          </p>
-          {/* <SearchBar /> */}
-          <div className="boxes">
-            <div className="box">
-              <h1>16+</h1>
-              <h2>Years of Experience</h2>
-            </div>
-            <div className="box">
-              <h1>200+</h1>
-              <h2>Award Gained</h2>
-            </div>
-            <div className="box">
-              <h1>2000+</h1>
-              <h2>Property Ready</h2>
-            </div>
-          </div>
-        </div>
-      </div>
+    <div className="home">
       <div className="imgContainer">
-        <img src="/splashPic.png" alt="splashImage" />
+        <img src="/splashPic.png" alt="" />
+      </div>
+      <div className="txtContainer">
+        <h1>
+          Get A dream place for yourself and your family,
+          <br />
+          Search for your favourite location{" "}
+        </h1>
+        <p>
+          Explore a curated selection of homes, apartments, and commercial
+          spaces. Partner with trusted agents and get personalized assistance.
+          <br />Start your property search with confidence today!
+        </p>
+        <Search></Search>
+        <div className="boxes">
+            <div className="box">
+                <h1>16+</h1>
+                <h2>Experience</h2>
+            </div>
+            <div className="box">
+                <h1>200</h1>
+                <h2>Gained Awards</h2>
+            </div>
+            <div className="box">
+                <h1>1300+</h1>
+                <h2>Properties Ready</h2>
+            </div>
+        </div>
       </div>
     </div>
   );
 }
-
 export default HomePage;
