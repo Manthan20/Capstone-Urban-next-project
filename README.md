@@ -1,4 +1,5 @@
 Steps To Run the project: - 
-npm install
-npm run start
-npx prisma studio
+
+1. npm install
+2. npm run start
+3. npx prisma studio
