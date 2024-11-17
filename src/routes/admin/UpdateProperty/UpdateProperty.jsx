@@ -57,17 +57,20 @@ function UpdateProperty() {
     <div className="update-property">
       <h1>Update Property</h1>
       <form onSubmit={handleSubmit}>
-        {Object.keys(property).map((key) => (
-          <input
-            key={key}
-            type={key === 'length' || key === 'breadth' ? 'number' : 'text'}
-            name={key}
-            placeholder={key.charAt(0).toUpperCase() + key.slice(1)}
-            value={property[key]}
-            onChange={handleInputChange}
-            required
-          />
-        ))}
+        {Object.keys(property)
+          .filter((key) => !['createdAt', 'updatedAt', 'userId'].includes(key)) // Exclude these fields
+          .map((key) => (
+            <input
+              key={key}
+              type={key === 'length' || key === 'breadth' ? 'number' : 'text'}
+              name={key}
+              placeholder={key.charAt(0).toUpperCase() + key.slice(1)}
+              value={property[key]}
+              onChange={handleInputChange}
+              required
+              disabled={key === 'id'} // Disable the 'id' field
+            />
+          ))}
         <button type="submit" className="update-btn">Update Property</button>
       </form>
     </div>
