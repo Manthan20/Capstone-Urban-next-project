@@ -10,10 +10,27 @@ datasource db {
 }
 
 model User {
-  id        Int      @id @default(autoincrement())
+  id        Int       @id @default(autoincrement())
   firstName String
   lastName  String
-  email     String   @unique
+  email     String    @unique
   password  String
-  role      String   @default("user")
+  role      String    @default("user")
+  properties Property[] @relation("UserProperties") // Adding the relation name
+}
+
+model Property {
+  id          Int      @id @default(autoincrement())
+  title       String
+  description String
+  imageUrl    String
+  length      Float    // Using Float for dimensions
+  breadth     Float
+  city        String
+  state       String
+  pincode     String
+  createdAt   DateTime @default(now()) // Timestamp for when the property was added
+  updatedAt   DateTime @updatedAt // Timestamp for the last update
+  userId      Int      // Foreign key to User
+  user        User     @relation("UserProperties", fields: [userId], references: [id]) // Adding the relation name
 }

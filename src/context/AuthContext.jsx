@@ -6,7 +6,8 @@ const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [username, setUsername] = useState("");
-  const [role, setRole] = useState(""); // Add role state
+  const [role, setRole] = useState(""); 
+  const [userId, setUserId] = useState(""); // Add userId state
 
   useEffect(() => {
     const storedUser = localStorage.getItem("user");
@@ -14,7 +15,8 @@ export const AuthProvider = ({ children }) => {
       const user = JSON.parse(storedUser);
       setIsLoggedIn(true);
       setUsername(user.firstName);
-      setRole(user.role); // Store the user's role
+      setRole(user.role);
+      setUserId(user.id); // Store the user's ID
     }
   }, []);
 
@@ -22,18 +24,20 @@ export const AuthProvider = ({ children }) => {
     localStorage.setItem("user", JSON.stringify(userData));
     setIsLoggedIn(true);
     setUsername(userData.firstName);
-    setRole(userData.role); // Set the role from userData
+    setRole(userData.role);
+    setUserId(userData.id); // Set the user ID from userData
   };
 
   const logout = () => {
     localStorage.removeItem("user");
     setIsLoggedIn(false);
     setUsername("");
-    setRole(""); // Reset role on logout
+    setRole(""); 
+    setUserId(""); // Reset userId on logout
   };
 
   return (
-    <AuthContext.Provider value={{ isLoggedIn, username, role, login, logout }}>
+    <AuthContext.Provider value={{ isLoggedIn, username, role, userId, login, logout }}>
       {children}
     </AuthContext.Provider>
   );

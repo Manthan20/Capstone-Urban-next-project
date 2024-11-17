@@ -2,7 +2,8 @@ import express from 'express';
 import { login, signup } from './api/auth.js';
 import bodyParser from 'body-parser';
 import cors from 'cors';
-import { PrismaClient } from '@prisma/client'; // Import Prisma Client
+import { PrismaClient } from '@prisma/client'; 
+import { getProperties, addProperty, updateProperty, deleteProperty, getPropertiesById } from './api/properties.js';
 
 const app = express();
 const port = 4000;
@@ -36,7 +37,7 @@ app.post('/api/login', async (req, res) => {
 // Get All Users Route
 app.get('/api/users', async (req, res) => {
   try {
-    const users = await prisma.user.findMany(); // Fetch all users from the database
+    const users = await prisma.user.findMany();
     res.status(200).json(users);
   } catch (error) {
     res.status(500).json({ error: 'Failed to fetch users' });
@@ -51,7 +52,7 @@ app.post('/api/users', async (req, res) => {
     const newUser = await prisma.user.create({
       data: { firstName, lastName, email, password, role },
     });
-    res.status(201).json(newUser); // Respond with the created user
+    res.status(201).json(newUser);
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
@@ -65,11 +66,18 @@ app.delete('/api/users/:id', async (req, res) => {
     await prisma.user.delete({
       where: { id: Number(id) },
     });
-    res.status(204).send(); // Respond with no content on successful deletion
+    res.status(204).send();
   } catch (error) {
     res.status(404).json({ error: 'User not found' });
   }
 });
+
+// Properties Routes
+app.get('/api/properties', getProperties); 
+app.post('/api/properties', addProperty);
+app.put('/api/properties/:id', updateProperty); 
+app.delete('/api/properties/:id', deleteProperty); 
+app.get('/api/properties/:id', getPropertiesById); 
 
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);

@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom"; // Import useNavigate for 
 import { useAuth } from "../../context/AuthContext";
 
 function Navbar() {
-  const { isLoggedIn, username, logout } = useAuth();
+  const { isLoggedIn, username, logout, role } = useAuth();
   const navigate = useNavigate(); // Hook for navigation
 
   const handleLogout = () => {
@@ -17,10 +17,22 @@ function Navbar() {
         <Link to="/">Urban Nest</Link>
       </div>
       <div className="midSide">
-        <Link to="/">Home</Link>
-        <Link to="/">About</Link>
-        <Link to="/">Contact</Link>
-        <Link to="/">Agents</Link>
+        {role === 'admin' ?
+          (
+            <>
+              <Link to="/admin">Home</Link>
+              <Link to="/admin/add-property">Add Property</Link>
+            </>
+          )
+          : (
+            <>
+              <Link to="/">Home</Link>
+              <Link to="/about">About</Link>
+              <Link to="/properties">Properties</Link>
+              <Link to="/wishlist">Wishlist</Link>
+            </>
+          )
+        }
       </div>
       <div className="rightSide">
         {isLoggedIn ? (
