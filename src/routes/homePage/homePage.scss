@@ -1,0 +1,52 @@
+@import "../../responsive.scss";
+
+.home {
+  display: block;
+  height: 100%;
+
+  .newly-listed-properties {
+    padding: 50px 20px;
+    background-color: #ffffff;
+
+    h2 {
+      text-align: center;
+      font-size: 1.5rem;
+    }
+
+    .property-cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+  }
+
+
+  .imgContainer {
+    display: flex;
+    height: 50%;
+    justify-content: center;
+
+    img {
+      height: 470px;
+    }
+
+    @include mediumFun {
+      height: 400px;
+    }
+  }
+
+  .txtContainer {
+    height: 50%;
+    text-align: center;
+  }
+
+  .boxes {
+    display: flex;
+    justify-content: space-evenly;
+
+    .box {
+      font-style: italic;
+    }
+  }
+}
