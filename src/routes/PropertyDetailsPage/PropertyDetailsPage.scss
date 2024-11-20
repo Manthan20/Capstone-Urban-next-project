@@ -1,0 +1,134 @@
+.property-details-page {
+  padding: 20px;
+
+  h1 {
+    margin-bottom: 20px;
+    font-size: 2.5rem;
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+    color: #333;
+  }
+
+  .property-details-container {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+    }
+
+    .property-slider {
+      flex: 1;
+      max-width: 600px;
+
+      .slider-image-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 400px;
+
+        .slider-image {
+          max-width: 100%;
+          max-height: 100%;
+          border-radius: 15px;
+          object-fit: cover;
+        }
+      }
+    }
+
+    .property-info {
+      flex: 1;
+      padding: 20px;
+      background-color: #ffffff;
+      border-radius: 15px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      font-family: 'Arial', sans-serif;
+      color: #444;
+
+      p {
+        margin: 10px 0;
+        font-size: 1.2rem;
+
+        strong {
+          font-weight: bold;
+        }
+      }
+
+      .property-features {
+        margin-top: 20px;
+
+        p {
+          font-size: 1.1rem;
+          display: flex;
+          align-items: center;
+          gap: 10px;
+        }
+      }
+
+      .sold-badge {
+        display: inline-block;
+        padding: 8px 15px;
+        border-radius: 25px;
+        font-size: 1.2rem;
+        font-weight: bold;
+        text-align: center;
+        color: white;
+
+        &.sold {
+          background-color: red;
+        }
+
+        &.available {
+          background-color: green;
+        }
+      }
+    }
+  }
+
+  .newly-listed-properties {
+    padding: 50px 20px;
+    background-color: #ffffff;
+
+    h2 {
+      text-align: center;
+      font-size: 1.5rem;
+    }
+
+    .property-cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+  }
+}
+
+// Custom styling for the arrows
+.custom-arrow {
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  font-size: 24px;
+  padding: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 100;
+
+  &.next {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  &.prev {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+}

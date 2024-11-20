@@ -1,0 +1,49 @@
+// PropertiesPage.scss
+.properties-page {
+    padding: 20px;
+  
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+  
+    .property-cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+  
+    }
+  }
+  .search-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .search-bar {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  .voice-button {
+    margin-left: 10px;
+    padding: 10px 15px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .voice-button:focus {
+    outline: none;
+  }
+  
+  .voice-button:active {
+    background-color: #0056b3;
+  }
+  
