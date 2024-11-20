@@ -1,58 +1,38 @@
-import { useState } from "react";
-import "./slider.scss";
+import React from "react";
+import Slider from "react-slick";
+import PropTypes from "prop-types";
 
-function Slider({ images }) {
-  const [imageIndex, setImageIndex] = useState(null);
-
-  const changeSlide = (direction) => {
-    if (direction === "left") {
-      if (imageIndex === 0) {
-        setImageIndex(images.length - 1);
-      } else {
-        setImageIndex(imageIndex - 1);
-      }
-    } else {
-      if (imageIndex === images.length - 1) {
-        setImageIndex(0);
-      } else {
-        setImageIndex(imageIndex + 1);
-      }
-    }
+export default function SimpleSlider({ images }) {
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 2000,
+    adaptiveHeight: true
   };
 
   return (
-    <div className="slider">
-      {imageIndex !== null && (
-        <div className="fullSlider">
-          <div className="arrow" onClick={() => changeSlide("left")}>
-            <img src="/arrow.png" alt="" />
+    <div className="slider-container">
+      <Slider {...settings}>
+        {images.map((image, index) => (
+          <div key={index}>
+            <img
+              src={image}
+              alt={`Slide ${index + 1}`}
+              style={{ width: "100%", height: "600px", margin: "0 auto" }}
+            />
           </div>
-          <div className="imgContainer">
-            <img src="{images[imageIndex]}" alt="" />
-          </div>
-          <div className="arrow" onClick={() => changeSlide("right")}>
-            <img src="arrow.png" className="right" alt="" />
-          </div>
-          <div className="close" onClick={() => setImageIndex(null)}>
-            X
-          </div>
-        </div>
-      )}
-      <div className="bigImage">
-        <img src="{images[0]}" alt="" onClick={() => setImageIndex(0)} />
-      </div>
-      <div className="smallImages">
-        {images.slice(1).map((image, index) => (
-          <img
-            src={image}
-            alt=""
-            key={index}
-            onClick={() => setImageIndex((index = 1))}
-          />
         ))}
-      </div>
+      </Slider>
     </div>
+
   );
 }
 
-export default Slider;
+// PropTypes for validation
+SimpleSlider.propTypes = {
+  images: PropTypes.arrayOf(PropTypes.string).isRequired,
+};

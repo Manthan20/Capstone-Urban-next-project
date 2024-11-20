@@ -14,7 +14,7 @@ function Navbar() {
   return (
     <nav>
       <div className="leftSide">
-        <Link to="/">Urban Nest</Link>
+        <img src="/logo.png" alt="logo" width={100} />
       </div>
       <div className="midSide">
         {role === 'admin' ?
@@ -22,6 +22,7 @@ function Navbar() {
             <>
               <Link to="/admin">Home</Link>
               <Link to="/admin/add-property">Add Property</Link>
+              <Link to="/profile">Profile</Link>
             </>
           )
           : (
@@ -30,6 +31,7 @@ function Navbar() {
               <Link to="/about">About</Link>
               <Link to="/properties">Properties</Link>
               <Link to="/wishlist">Wishlist</Link>
+              {isLoggedIn && (<Link to="/profile">Profile</Link>)}
             </>
           )
         }
@@ -43,9 +45,9 @@ function Navbar() {
           </div>
         ) : (
           <>
-            <Link to="/login">Sign In</Link>
-            <Link className="signUp" to="/signup">
-              Sign Up
+            <Link to="/login">Log In</Link>
+            <Link className="signUp" to="/join">
+              Join Now !
             </Link>
           </>
         )}

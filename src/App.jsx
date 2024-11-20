@@ -11,6 +11,10 @@ import PropertiesPage from "./routes/PropertiesPage/PropertiesPage";
 import WishlistPage from "./routes/WishlistPage/WishlistPage";
 import AboutUsPage from "./routes/AboutUsPage/AboutUsPage";
 import UpdateProperty from "./routes/admin/UpdateProperty/UpdateProperty";
+import JoinMembershipPage from "./routes/JoinMembershipPage/JoinMembershipPage";
+import PropertyDetailsPage from "./routes/PropertyDetailsPage/PropertyDetailsPage";
+import ProfilePage from "./routes/profilePage/profilePage";
+import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 
 function App() {
   const router = createBrowserRouter([
@@ -47,8 +51,16 @@ function App() {
           element: <UpdateProperty />,
         },
         {
+          path: "/profile/*",
+          element:<ProtectedRoute ><ProfilePage /></ProtectedRoute>,
+        },
+        {
           path: "/properties",
           element: <PropertiesPage />,
+        },
+        {
+          path: "/property/:id",
+          element: <PropertyDetailsPage />,
         },
         {
           path: "/wishlist",
@@ -57,6 +69,10 @@ function App() {
         {
           path: "/about",
           element: <AboutUsPage />,
+        },
+        {
+          path: "/join",
+          element: <JoinMembershipPage />,
         },
         {
           path: "/:id",
