@@ -1,0 +1,93 @@
+// AboutUsPage.scss
+.about-us-page {
+    background: linear-gradient(to right, #f8f9fa, #e9ecef);
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    
+    h1 {
+      font-size: 2.5rem;
+      text-align: center;
+      margin-bottom: 40px;
+      color: #343a40;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    }
+  
+    section {
+      margin-bottom: 40px;
+      padding: 20px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      
+      h2 {
+        font-size: 2rem;
+        color: #007bff;
+        border-bottom: 2px solid #007bff;
+        padding-bottom: 10px;
+        margin-bottom: 20px;
+      }
+  
+      p {
+        font-size: 1.1rem;
+        color: #495057;
+        line-height: 1.6;
+      }
+    }
+    .team {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 20px; // Creates consistent spacing between items
+    
+      .team-member {
+        background: #ffffff;
+        border-radius: 10px;
+        padding: 20px;
+        margin: 10px 0;
+        width: calc(50% - 10px); // Adjusts for two-column layout with margin
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s, box-shadow 0.3s;
+    
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    
+        &:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+    
+        h3 {
+          font-size: 1.5rem;
+          color: #1e87f0;
+          margin-bottom: 10px;
+        }
+    
+        p {
+          font-size: 1rem;
+          color: #6c757d;
+          margin-bottom: 5px;
+        }
+      }
+    
+      // Responsive design for smaller screens
+      @media screen and (max-width: 768px) {
+        .team-member {
+          width: 100%; // Full width for small screens
+        }
+      }
+    }
+    
+    .contact {
+      text-align: center;
+  
+      p {
+        font-size: 1.1rem;
+        margin: 5px 0;
+        color: #495057;
+      }
+    }
+  }
+  
