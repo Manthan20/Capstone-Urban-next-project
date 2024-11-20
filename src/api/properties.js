@@ -13,14 +13,14 @@ export const getProperties = async (req, res) => {
   }
 };
 
-// get property by element id 
+// Get property by ID
 export const getPropertiesById = async (req, res) => {
   const { id } = req.params;
   try {
     const property = await prisma.property.findUnique({
       where: { id: Number(id) },
     });
-    
+
     if (!property) {
       return res.status(404).json({ error: 'Property not found' });
     }
@@ -34,7 +34,23 @@ export const getPropertiesById = async (req, res) => {
 
 // Add a new property
 export const addProperty = async (req, res) => {
-  const { title, description, imageUrl, length, breadth, city, state, pincode, userId } = req.body;
+  const {
+    title,
+    description,
+    imageUrl,
+    length,
+    breadth,
+    city,
+    state,
+    pincode,
+    price,
+    bedrooms,
+    bathrooms,
+    parking,
+    furnished,
+    sold,
+    userId,
+  } = req.body;
 
   try {
     const property = await prisma.property.create({
@@ -47,6 +63,12 @@ export const addProperty = async (req, res) => {
         city,
         state,
         pincode,
+        price: parseFloat(price),
+        bedrooms: parseInt(bedrooms, 10),
+        bathrooms: parseInt(bathrooms, 10),
+        parking: Boolean(parking),
+        furnished: Boolean(furnished),
+        sold: Boolean(sold),
         user: { connect: { id: userId } },
       },
     });
@@ -60,7 +82,22 @@ export const addProperty = async (req, res) => {
 // Update a property
 export const updateProperty = async (req, res) => {
   const { id } = req.params;
-  const { title, description, imageUrl, length, breadth, city, state, pincode } = req.body;
+  const {
+    title,
+    description,
+    imageUrl,
+    length,
+    breadth,
+    city,
+    state,
+    pincode,
+    price,
+    bedrooms,
+    bathrooms,
+    parking,
+    furnished,
+    sold,
+  } = req.body;
 
   try {
     const property = await prisma.property.update({
@@ -74,6 +111,12 @@ export const updateProperty = async (req, res) => {
         city,
         state,
         pincode,
+        price: parseFloat(price),
+        bedrooms: parseInt(bedrooms, 10),
+        bathrooms: parseInt(bathrooms, 10),
+        parking: Boolean(parking),
+        furnished: Boolean(furnished),
+        sold: Boolean(sold),
       },
     });
     res.json(property);
