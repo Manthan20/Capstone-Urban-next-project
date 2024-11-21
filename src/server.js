@@ -173,5 +173,5 @@ app.delete("/api/properties/:id", deleteProperty);
 app.get("/api/properties/:id", getPropertiesById);
 
 app.listen(port, () => {
-  console.log(Server is running on http://localhost:${port});
+  console.log(`Server is running on http://localhost:${port}`);
 });
