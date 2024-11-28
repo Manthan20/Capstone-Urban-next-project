@@ -1,0 +1,38 @@
+.filter-component {
+    padding: 20px;
+  
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 20px;
+  
+      select,
+      input,
+      button {
+        padding: 10px;
+        font-size: 1rem;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+      }
+  
+      button {
+        background-color: #007bff;
+        color: white;
+        cursor: pointer;
+        border: none;
+  
+        &:hover {
+          background-color: #0056b3;
+        }
+      }
+    }
+  
+    .property-results {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+  }
+  
