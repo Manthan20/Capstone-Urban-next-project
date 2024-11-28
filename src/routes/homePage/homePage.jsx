@@ -7,6 +7,7 @@ import PropertyCard from "../../components/PropertyCard/PropertyCard"; // Create
 import axios from 'axios'; // To fetch properties
 import "./homePage.scss";
 import FilterPart from '../../components/filter/FilterPart';
+import FilterComponent from '../../components/FilterComponent/FilterComponent';
 
 function HomePage() {
   const images = [
@@ -74,6 +75,7 @@ function HomePage() {
           spaces. Partner with trusted agents and get personalized assistance.
           <br />Start your property search with confidence today!
         </p>
+        <FilterComponent/>
         <div className="boxes">
           <div className="box">
             <h1>16+</h1>
