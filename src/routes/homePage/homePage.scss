@@ -3,6 +3,7 @@
 .home {
   display: block;
   height: 100%;
+  padding: 0 20px;
 
   .newly-listed-properties {
     padding: 50px 20px;
@@ -21,32 +22,190 @@
     }
   }
 
-
   .imgContainer {
     display: flex;
-    height: 50%;
     justify-content: center;
 
     img {
       height: 470px;
+      width: 100%;
+      object-fit: cover;
     }
 
     @include mediumFun {
-      height: 400px;
+      img {
+        height: 300px;
+      }
+    }
+
+    @include smallFun {
+      img {
+        height: 200px;
+      }
     }
   }
 
   .txtContainer {
-    height: 50%;
     text-align: center;
+    margin-top: 20px;
+
+    h1 {
+      font-size: 2rem;
+      line-height: 1.5;
+
+      @include mediumFun {
+        font-size: 1.8rem;
+      }
+
+      @include smallFun {
+        font-size: 1.5rem;
+      }
+    }
+
+    p {
+      font-size: 1rem;
+      margin: 10px 0;
+
+      @include mediumFun {
+        font-size: 0.9rem;
+      }
+
+      @include smallFun {
+        font-size: 0.8rem;
+      }
+    }
   }
 
   .boxes {
     display: flex;
     justify-content: space-evenly;
+    margin: 20px 0;
 
     .box {
       font-style: italic;
+      text-align: center;
+
+      h1 {
+        font-size: 2rem;
+
+        @include mediumFun {
+          font-size: 1.5rem;
+        }
+
+        @include smallFun {
+          font-size: 1.2rem;
+        }
+      }
+
+      h2 {
+        font-size: 1rem;
+
+        @include mediumFun {
+          font-size: 0.9rem;
+        }
+
+        @include smallFun {
+          font-size: 0.8rem;
+        }
+      }
+    }
+
+    @include mediumFun {
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    @include smallFun {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+
+  .newly-listed-properties {
+    padding: 30px 10px;
+
+    h2 {
+      font-size: 1.8rem;
+
+      @include mediumFun {
+        font-size: 1.5rem;
+      }
+
+      @include smallFun {
+        font-size: 1.2rem;
+      }
+    }
+
+    .property-cards {
+      gap: 15px;
+
+      @include smallFun {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  }
+}
+
+// Responsive breakpoints
+@include mediumFun {
+  // Medium screens (tablets)
+  .home {
+    .imgContainer {
+      img {
+        height: 300px;
+      }
+    }
+  }
+}
+
+@include smallFun {
+  // Small screens (mobile)
+  .home {
+    padding: 10px;
+
+    .imgContainer {
+      img {
+        height: 200px;
+      }
+    }
+
+    .txtContainer {
+      h1 {
+        font-size: 1.5rem;
+      }
+
+      p {
+        font-size: 0.9rem;
+      }
+    }
+
+    .boxes {
+      flex-direction: column;
+      gap: 10px;
+
+      .box {
+        h1 {
+          font-size: 1.2rem;
+        }
+
+        h2 {
+          font-size: 0.9rem;
+        }
+      }
+    }
+
+    .newly-listed-properties {
+      padding: 20px 5px;
+
+      h2 {
+        font-size: 1.2rem;
+      }
+
+      .property-cards {
+        flex-direction: column;
+        gap: 10px;
+      }
     }
   }
 }

@@ -16,7 +16,7 @@ function PropertiesPage() {
       try {
         const response = await axios.get('http://localhost:4000/api/properties');
         setProperties(response.data);
-        setFilteredProperties(response.data); 
+        setFilteredProperties(response.data); // Initialize filtered properties
       } catch (error) {
         console.error('Error fetching properties:', error);
         alert('Failed to fetch properties.');
@@ -41,13 +41,9 @@ function PropertiesPage() {
     setFilteredProperties(filtered);
   };
 
-  if (loading) {
-    return <p>Loading properties...</p>;
-  }
-
   const startVoiceRecognition = () => {
     if (!('webkitSpeechRecognition' in window)) {
-      alert('Speech recognition is not supported in this browser.');
+      alert('Speech recognition is not supported in this browser. Please use Google Chrome.');
       return;
     }
 
@@ -75,9 +71,14 @@ function PropertiesPage() {
     recognition.start();
   };
 
+  if (loading) {
+    return <p>Loading properties...</p>;
+  }
+
   return (
     <div className="properties-page">
       <h1>Properties</h1>
+      {/* Search Bar with Microphone */}
       <div className="search-container">
         <input
           type="text"

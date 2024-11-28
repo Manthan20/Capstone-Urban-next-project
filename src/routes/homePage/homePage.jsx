@@ -63,9 +63,6 @@ function HomePage() {
   return (
     <div className="home">
       <SimpleSlider images={images} />
-      <div className="imgContainer">
-        <img src="/splashPic.png" alt="" />
-      </div>
       <div className="txtContainer">
         <h1>
           Get A dream place for yourself and your family,
