@@ -6,7 +6,7 @@ function JoinMembershipPage() {
     <div className="join-membership-page">
       <h1>Join Our Membership</h1>
       <p className="intro">
-        Become a member of Urban Nest and unlock exclusive benefits to enhance your real estate experience. Choose 
+        Become a member of Urban Nest and unlock exclusive benefits to enhance your real estate experience. Choose
         from our affordable membership plans designed to cater to your specific needs.
       </p>
 
@@ -19,7 +19,11 @@ function JoinMembershipPage() {
             <li>Monthly market insights</li>
             <li>Priority support</li>
           </ul>
-          <button className="cta-button">Join Now</button>
+          <button className="cta-button">
+            <a href='https://buy.stripe.com/test_4gw9B3adZ6ym5RmdQQ'>
+              Join Now
+            </a>
+          </button>
         </div>
 
         <div className="plan-card featured">
@@ -32,7 +36,11 @@ function JoinMembershipPage() {
             <li>Real-time notifications</li>
             <li>Dedicated agent support</li>
           </ul>
-          <button className="cta-button">Join Now</button>
+          <button className="cta-button">
+            <a href='https://buy.stripe.com/test_9AQ28Bfyjg8WcfK289'>
+            Join Now
+            </a>
+            </button>
         </div>
 
         <div className="plan-card">
@@ -45,7 +53,11 @@ function JoinMembershipPage() {
             <li>One-on-one consultation with experts</li>
             <li>Free property evaluation</li>
           </ul>
-          <button className="cta-button">Join Now</button>
+          <button className="cta-button">
+            <a href='https://buy.stripe.com/test_28ofZr2LxcWK6Vq7su'>
+            Join Now
+            </a>
+            </button>
         </div>
       </section>
     </div>
