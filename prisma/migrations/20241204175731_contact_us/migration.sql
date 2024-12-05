@@ -1,0 +1,28 @@
+-- CreateTable
+CREATE TABLE "Contact" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "name" TEXT NOT NULL,
+    "email" TEXT NOT NULL,
+    "message" TEXT NOT NULL,
+    "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+-- RedefineTables
+PRAGMA defer_foreign_keys=ON;
+PRAGMA foreign_keys=OFF;
+CREATE TABLE "new_User" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "firstName" TEXT NOT NULL,
+    "lastName" TEXT,
+    "email" TEXT NOT NULL,
+    "password" TEXT,
+    "role" TEXT NOT NULL DEFAULT 'user',
+    "membershipId" INTEGER,
+    CONSTRAINT "User_membershipId_fkey" FOREIGN KEY ("membershipId") REFERENCES "Membership" ("id") ON DELETE SET NULL ON UPDATE CASCADE
+);
+INSERT INTO "new_User" ("email", "firstName", "id", "lastName", "membershipId", "password", "role") SELECT "email", "firstName", "id", "lastName", "membershipId", "password", "role" FROM "User";
+DROP TABLE "User";
+ALTER TABLE "new_User" RENAME TO "User";
+CREATE UNIQUE INDEX "User_email_key" ON "User"("email");
+PRAGMA foreign_keys=ON;
+PRAGMA defer_foreign_keys=OFF;
