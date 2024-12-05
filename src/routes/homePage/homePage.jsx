@@ -1,12 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import Search from "../../components/searchbar/Search";
 import SimpleSlider from "../../components/slider/Slider";
-import Slider from "../../components/slider/Slider";
 import { TestimonialSlider } from "../../components/TestimonialSlider/TestimonialSlider";
 import PropertyCard from "../../components/PropertyCard/PropertyCard"; // Create this component for displaying individual properties
 import axios from 'axios'; // To fetch properties
 import "./homePage.scss";
-import FilterPart from '../../components/filter/FilterPart';
 import FilterComponent from '../../components/FilterComponent/FilterComponent';
 
 function HomePage() {
@@ -32,7 +29,7 @@ function HomePage() {
   useEffect(() => {
     const fetchProperties = async () => {
       try {
-        const response = await axios.get('http://localhost:4000/api/properties'); // Fetch all properties
+        const response = await axios.get('http://localhost:5000/api/properties'); // Fetch all properties
         
         // Filter out sold properties
         const availableProperties = response.data.filter((property) => !property.sold);

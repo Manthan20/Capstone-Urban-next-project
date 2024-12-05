@@ -100,39 +100,40 @@
       }
     }
   }
+
   @media (max-width: 768px) {
     .property-table {
       th, td {
-        font-size: 0.8rem;
-        padding: 10px;
+        font-size: 12px;
+        padding: 8px;
       }
 
       .thumbnail {
-        width: 80px;
-        height: 60px;
+        width: 60px;
+        height: 45px;
       }
     }
 
     h1 {
-      font-size: 1.5rem;
+      font-size: 18px;
     }
   }
 
   @media (max-width: 480px) {
     .property-table {
       th, td {
-        font-size: 0.7rem;
-        padding: 8px;
+        font-size: 10px;
+        padding: 5px;
       }
 
       .thumbnail {
-        width: 60px;
-        height: 50px;
+        width: 50px;
+        height: 40px;
       }
     }
 
     h1 {
-      font-size: 1.2rem;
+      font-size: 16px;
     }
   }
 }

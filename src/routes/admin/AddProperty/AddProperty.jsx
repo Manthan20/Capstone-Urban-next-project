@@ -35,7 +35,7 @@ function AddProperty() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:4000/api/properties', {
+      await axios.post('http://localhost:5000/api/properties', {
         ...newProperty,
         userId,
       });

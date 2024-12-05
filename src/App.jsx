@@ -13,8 +13,10 @@ import AboutUsPage from "./routes/AboutUsPage/AboutUsPage";
 import UpdateProperty from "./routes/admin/UpdateProperty/UpdateProperty";
 import JoinMembershipPage from "./routes/JoinMembershipPage/JoinMembershipPage";
 import PropertyDetailsPage from "./routes/PropertyDetailsPage/PropertyDetailsPage";
+import ContactUsPage from "./routes/ContactUsPage/ContactUsPage";
 import ProfilePage from "./routes/profilePage/profilePage";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
+import AdminMessagesPanel from "./routes/admin/AdminMessagesPanel/AdminMessagesPanel";
 
 function App() {
   const router = createBrowserRouter([
@@ -51,8 +53,8 @@ function App() {
           element: <UpdateProperty />,
         },
         {
-          path: "/profile/*",
-          element:<ProtectedRoute ><ProfilePage /></ProtectedRoute>,
+          path: "/admin/messages",
+          element: <AdminMessagesPanel />,
         },
         {
           path: "/properties",
@@ -73,6 +75,14 @@ function App() {
         {
           path: "/join",
           element: <JoinMembershipPage />,
+        },
+        {
+          path: "/profile/*",
+          element:<ProtectedRoute ><ProfilePage /></ProtectedRoute>,
+        },
+        {
+          path: "/contact",
+          element: <ContactUsPage />,
         },
         {
           path: "/:id",

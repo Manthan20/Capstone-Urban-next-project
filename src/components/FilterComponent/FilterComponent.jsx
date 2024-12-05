@@ -18,7 +18,7 @@ const FilterComponent = ({ allProperties }) => {
   useEffect(() => {
     const fetchProperties = async () => {
       try {
-        const response = await axios.get('http://localhost:4000/api/properties');
+        const response = await axios.get('http://localhost:5000/api/properties');
         setProperties(response.data);
       } catch (error) {
         console.error('Error fetching properties:', error);
@@ -37,7 +37,7 @@ const FilterComponent = ({ allProperties }) => {
     const validMaxPrice = maxPrice && !isNaN(maxPrice) ? maxPrice : '';
 
     try {
-      const response = await axios.get('http://localhost:4000/api/properties/filter', {
+      const response = await axios.get('http://localhost:5000/api/properties/filter', {
         params: {
           bedrooms,
           bathrooms,

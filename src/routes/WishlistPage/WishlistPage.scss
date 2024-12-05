@@ -1,10 +1,15 @@
-// WishlistPage.scss
 .wishlist-page {
-    padding: 20px;
+  background: linear-gradient(to right, #f8f9fa, #e9ecef);
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   
     h1 {
-      font-size: 2rem;
-      margin-bottom: 20px;
+      font-size: 2.5rem;
+      text-align: center;
+      margin-bottom: 40px;
+      color: #343a40;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
     }
   
     .property-cards {
