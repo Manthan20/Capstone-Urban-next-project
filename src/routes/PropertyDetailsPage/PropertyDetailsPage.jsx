@@ -30,7 +30,7 @@ function PropertyDetailsPage() {
   useEffect(() => {
     const fetchProperty = async () => {
       try {
-        const response = await axios.get(`http://localhost:4000/api/properties/${id}`);
+        const response = await axios.get(`http://localhost:5000/api/properties/${id}`);
         setProperty(response.data);
 
         // Fetch coordinates for the location
@@ -62,7 +62,7 @@ function PropertyDetailsPage() {
   useEffect(() => {
     const fetchProperties = async () => {
       try {
-        const response = await axios.get('http://localhost:4000/api/properties');
+        const response = await axios.get('http://localhost:5000/api/properties');
         const availableProperties = response.data.filter((property) => !property.sold);
         const shuffledProperties = availableProperties.sort(() => Math.random() - 0.5);
         const topProperties = shuffledProperties.slice(0, 4);
@@ -96,9 +96,7 @@ function PropertyDetailsPage() {
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 2000,
-    arrows: true,
-    nextArrow: <div className="custom-arrow next">▶</div>,
-    prevArrow: <div className="custom-arrow prev">◀</div>,
+    arrows: false,
   };
 
   const soldBadgeClass = property.sold ? 'sold-badge sold' : 'sold-badge available';

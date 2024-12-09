@@ -13,8 +13,12 @@ import AboutUsPage from "./routes/AboutUsPage/AboutUsPage";
 import UpdateProperty from "./routes/admin/UpdateProperty/UpdateProperty";
 import JoinMembershipPage from "./routes/JoinMembershipPage/JoinMembershipPage";
 import PropertyDetailsPage from "./routes/PropertyDetailsPage/PropertyDetailsPage";
-import ProfilePage from "./routes/profilePage/profilePage";
+import ContactUsPage from "./routes/ContactUsPage/ContactUsPage";
+import ProfilePage from "./routes/ProfilePage/ProfilePage";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
+import AdminMessagesPanel from "./routes/admin/AdminMessagesPanel/AdminMessagesPanel";
+import AdminAppointments from "./routes/admin/Appointments/Appointments";
+import AppointmentCalendar from "./routes/AppointmentCalendar/AppointmentCalendar";
 
 function App() {
   const router = createBrowserRouter([
@@ -51,8 +55,12 @@ function App() {
           element: <UpdateProperty />,
         },
         {
-          path: "/profile/*",
-          element:<ProtectedRoute ><ProfilePage /></ProtectedRoute>,
+          path: "/admin/messages",
+          element: <AdminMessagesPanel />,
+        },
+        {
+          path: "/admin/appointments",
+          element: <AdminAppointments />,
         },
         {
           path: "/properties",
@@ -71,8 +79,20 @@ function App() {
           element: <AboutUsPage />,
         },
         {
+          path: "/appointment",
+          element: <AppointmentCalendar />,
+        },
+        {
           path: "/join",
           element: <JoinMembershipPage />,
+        },
+        {
+          path: "/profile/*",
+          element:<ProtectedRoute ><ProfilePage /></ProtectedRoute>,
+        },
+        {
+          path: "/contact",
+          element: <ContactUsPage />,
         },
         {
           path: "/:id",

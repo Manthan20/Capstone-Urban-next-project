@@ -6,7 +6,7 @@
     font-size: 2.5rem;
     text-align: center;
     font-family: 'Arial', sans-serif;
-    color: #333;
+   // color: #333;
 
     @media (max-width: 768px) {
       font-size: 2rem;
@@ -57,11 +57,11 @@
     .property-info {
       flex: 2;
       padding: 20px;
-      background-color: #e1c8c8;
+      // testbackground-color: #e1c8c8;
       border-radius: 15px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
       font-family: 'Arial', sans-serif;
-      color: #444;
+     // color: #444;
 
       @media (max-width: 768px) {
         padding: 15px;
@@ -102,14 +102,14 @@
         font-size: 1.2rem;
         font-weight: bold;
         text-align: center;
-        color: white;
+        // color: white;
 
         &.sold {
-          background-color: red;
+          // testbackground-color: red;
         }
 
         &.available {
-          background-color: green;
+          // testbackground-color: green;
         }
       }
     }
@@ -117,7 +117,7 @@
     .property-map {
       flex: 1;
       height: 500px;
-      background-color: #f9f9f9;
+      // testbackground-color: #f9f9f9;
       border-radius: 15px;
       overflow: hidden;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -183,8 +183,8 @@
 
 // Custom slider arrow styles
 .custom-arrow {
-  background-color: rgba(0, 0, 0, 0.6);
-  color: white;
+  // testbackground-// color: rgba(0, 0, 0, 0.6);
+  // color: white;
   font-size: 24px;
   padding: 10px;
   border-radius: 50%;
@@ -192,7 +192,7 @@
   z-index: 100;
 
   &:hover {
-    background-color: rgba(0, 0, 0, 0.8);
+    // testbackground-// color: rgba(0, 0, 0, 0.8);
   }
 
   &.next {
