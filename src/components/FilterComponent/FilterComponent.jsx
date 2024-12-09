@@ -18,13 +18,11 @@ const FilterComponent = ({ allProperties }) => {
   useEffect(() => {
     const fetchProperties = async () => {
       try {
-        const response = await axios.get('http://localhost:4000/api/properties');
+        const response = await axios.get('http://localhost:5000/api/properties');
         setProperties(response.data);
       } catch (error) {
         console.error('Error fetching properties:', error);
         alert('Failed to fetch properties.');
-      } finally {
-        setLoading(false);
       }
     };
 
@@ -37,7 +35,7 @@ const FilterComponent = ({ allProperties }) => {
     const validMaxPrice = maxPrice && !isNaN(maxPrice) ? maxPrice : '';
 
     try {
-      const response = await axios.get('http://localhost:4000/api/properties/filter', {
+      const response = await axios.get('http://localhost:5000/api/properties/filter', {
         params: {
           bedrooms,
           bathrooms,
@@ -48,7 +46,6 @@ const FilterComponent = ({ allProperties }) => {
         },
       });
 
-      console.log(response);
       setFilteredProperties(response.data);
     } catch (error) {
       console.error('Error fetching filtered properties:', error);
@@ -100,101 +97,103 @@ const FilterComponent = ({ allProperties }) => {
 
   return (
     <>
-      {allProperties && (
-        <div className="search-container">
-          <div className="search-bar-wrapper">
-            <input
-              type="text"
-              placeholder="Search properties..."
-              value={searchQuery}
-              onChange={handleSearchChange}
-              className="search-bar"
-            />
-            <button
-              className="voice-button"
-              onClick={startVoiceRecognition}
-              aria-label="Start voice search"
-            >
-              🎙️
-            </button>
+      {/* Search bar at the top */}
+      <div className="search-container">
+        <div className="search-bar-wrapper">
+          <input
+            type="text"
+            placeholder="Search properties..."
+            value={searchQuery}
+            onChange={handleSearchChange}
+            className="search-bar"
+          />
+          <button
+            className="voice-button"
+            onClick={startVoiceRecognition}
+            aria-label="Start voice search"
+          >
+            <i class="fa fa-microphone"></i>
+          </button>
+        </div>
+      </div>
+      <div className="filter-layout">
+        {/* Filters Sidebar */}
+        <div className="filter-sidebar">
+          <div className="filters">
+            {allProperties ? (
+              <>
+                <select value={bedrooms} onChange={(e) => setBedrooms(e.target.value)}>
+                  <option value="">Bedrooms</option>
+                  <option value="1">1 Bedroom</option>
+                  <option value="2">2 Bedrooms</option>
+                  <option value="3">3 Bedrooms</option>
+                  <option value="4">4 Bedrooms</option>
+                </select>
+
+                <select value={bathrooms} onChange={(e) => setBathrooms(e.target.value)}>
+                  <option value="">Bathrooms</option>
+                  <option value="1">1 Bathroom</option>
+                  <option value="2">2 Bathrooms</option>
+                  <option value="3">3 Bathrooms</option>
+                </select>
+
+                <input
+                  type="text"
+                  placeholder="State"
+                  value={state}
+                  onChange={(e) => setState(e.target.value)}
+                />
+                <input
+                  type="text"
+                  placeholder="City"
+                  value={city}
+                  onChange={(e) => setCity(e.target.value)}
+                />
+
+                <input
+                  type="number"
+                  placeholder="Min Price"
+                  value={minPrice}
+                  onChange={(e) => setMinPrice(e.target.value)}
+                />
+
+                <input
+                  type="number"
+                  placeholder="Max Price"
+                  value={maxPrice}
+                  onChange={(e) => setMaxPrice(e.target.value)}
+                />
+              </>
+            ) : (
+              <>
+                <input
+                  type="text"
+                  placeholder="City"
+                  value={city}
+                  onChange={(e) => setCity(e.target.value)}
+                />
+
+                <input
+                  type="number"
+                  placeholder="Min Price"
+                  value={minPrice}
+                  onChange={(e) => setMinPrice(e.target.value)}
+                />
+
+                <input
+                  type="number"
+                  placeholder="Max Price"
+                  value={maxPrice}
+                  onChange={(e) => setMaxPrice(e.target.value)}
+                />
+              </>
+            )}
+
+            <button onClick={handleSearch}>Search</button>
           </div>
         </div>
-      )}
 
-      <div className="filter-component">
-        <div className="filters">
-          {allProperties ? (
-            <>
-              <select value={bedrooms} onChange={(e) => setBedrooms(e.target.value)}>
-                <option value="">Bedrooms</option>
-                <option value="1">1 Bedroom</option>
-                <option value="2">2 Bedrooms</option>
-                <option value="3">3 Bedrooms</option>
-                <option value="4">4 Bedrooms</option>
-              </select>
-
-              <select value={bathrooms} onChange={(e) => setBathrooms(e.target.value)}>
-                <option value="">Bathrooms</option>
-                <option value="1">1 Bathroom</option>
-                <option value="2">2 Bathrooms</option>
-                <option value="3">3 Bathrooms</option>
-              </select>
-
-              <input
-                type="text"
-                placeholder="State"
-                value={state}
-                onChange={(e) => setState(e.target.value)}
-              />
-              <input
-                type="text"
-                placeholder="City"
-                value={city}
-                onChange={(e) => setCity(e.target.value)}
-              />
-
-              <input
-                type="number"
-                placeholder="Min Price"
-                value={minPrice}
-                onChange={(e) => setMinPrice(e.target.value)}
-              />
-
-              <input
-                type="number"
-                placeholder="Max Price"
-                value={maxPrice}
-                onChange={(e) => setMaxPrice(e.target.value)}
-              />
-            </>
-          ) : (
-            <>
-              <input
-                type="text"
-                placeholder="City"
-                value={city}
-                onChange={(e) => setCity(e.target.value)}
-              />
-
-              <input
-                type="number"
-                placeholder="Min Price"
-                value={minPrice}
-                onChange={(e) => setMinPrice(e.target.value)}
-              />
-
-              <input
-                type="number"
-                placeholder="Max Price"
-                value={maxPrice}
-                onChange={(e) => setMaxPrice(e.target.value)}
-              />
-            </>
-          )}
-
-          <button onClick={handleSearch}>Search</button>
-        </div>
-
+        {/* Property Cards */}
         <div className="property-results">
           {filteredProperties.length > 0 ? (
             filteredProperties.map((property) => (

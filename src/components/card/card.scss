@@ -1,7 +1,7 @@
 .card{
     display: flex;
     gap: 20px;
-    background-color: rgb(234, 234, 234);
+    // testbackground-// color: rgb(234, 234, 234);
     box-shadow: 5px 5px 20px rgb(208, 208, 208);
     .imgContainer{
         flex: 2;
@@ -25,7 +25,7 @@
         .title{
             font-size: 20px;
             font-weight: 600;
-            color: rgb(1, 1, 82);
+            // color: rgb(1, 1, 82);
             transition: all 0.4s ease;
             text-decoration: none;
 
@@ -41,7 +41,7 @@
 
         .address{
             size: 14px;
-            color: rgb(105, 105, 105);
+            // color: rgb(105, 105, 105);
             margin: 0;
         }
 
@@ -49,7 +49,7 @@
             font-size: 18px;
             font-weight: 400;
             padding: 5px;
-            // background-color: aqua;
+            // // testbackground-color: aqua;
             border: 1px solid rgb(1, 1, 78);
            width: max-content;
         }
