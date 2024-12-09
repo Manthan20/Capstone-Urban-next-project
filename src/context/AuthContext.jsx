@@ -21,11 +21,11 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   const login = (userData) => {
-    localStorage.setItem("user", JSON.stringify(userData));
+    localStorage.setItem('user', JSON.stringify(userData));
     setIsLoggedIn(true);
     setUsername(userData.firstName);
     setRole(userData.role);
-    setUserId(userData.id); // Set the user ID from userData
+    setUserId(userData.id);
   };
 
   const logout = () => {

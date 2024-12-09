@@ -68,7 +68,7 @@ const SettingsPage = ({ user, setUser }) => {
     setLoading(true);
     try {
       const response = await axios.put(
-        "http://localhost:4000/api/user/profile",
+        "http://localhost:5000/api/user/profile",
         {
           firstName: form.firstName,
           lastName: form.lastName,
@@ -146,7 +146,7 @@ const ProfilePage = () => {
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const response = await axios.get("http://localhost:4000/api/user/profile", {
+        const response = await axios.get("http://localhost:5000/api/user/profile", {
           headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
         });
         setUser(response.data);
