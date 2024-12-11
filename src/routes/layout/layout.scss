@@ -4,15 +4,16 @@
   flex-direction: column;
 
   @include largeFun {
-    background-color: rgb(245, 245, 245);
+    // testbackground-// color: rgb(245, 245, 245);
   }
   @include mediumFun {
-    background-color: rgb(245, 245, 245);
+    // testbackground-// color: rgb(245, 245, 245);
   }
   @include smallFun {
-    background-color: rgb(245, 245, 245);
+    // testbackground-// color: rgb(245, 245, 245);
   }
   .content {
-    background-color: white;
+    min-height: 80vh;
+    margin-top: 60px;
   }
 }

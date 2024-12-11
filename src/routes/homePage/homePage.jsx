@@ -1,13 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import Search from "../../components/searchbar/Search";
 import SimpleSlider from "../../components/slider/Slider";
-import Slider from "../../components/slider/Slider";
 import { TestimonialSlider } from "../../components/TestimonialSlider/TestimonialSlider";
 import PropertyCard from "../../components/PropertyCard/PropertyCard"; // Create this component for displaying individual properties
 import axios from 'axios'; // To fetch properties
 import "./homePage.scss";
-import FilterPart from '../../components/filter/FilterPart';
-import FilterComponent from '../../components/FilterComponent/FilterComponent';
+import HomeFilter from '../../components/HomeFilter/HomeFilter';
 
 function HomePage() {
   const images = [
@@ -32,7 +29,7 @@ function HomePage() {
   useEffect(() => {
     const fetchProperties = async () => {
       try {
-        const response = await axios.get('http://localhost:4000/api/properties'); // Fetch all properties
+        const response = await axios.get('https://capstone-server-aclw.onrender.com/api/properties'); // Fetch all properties
         
         // Filter out sold properties
         const availableProperties = response.data.filter((property) => !property.sold);
@@ -53,9 +50,7 @@ function HomePage() {
     };
   
     fetchProperties();
-  }, []); // Fetch newly listed properties only once when component mounts
-
-  
+  }, []); 
 
   if (loading) {
     return <p>Loading newly listed properties...</p>;
@@ -64,36 +59,42 @@ function HomePage() {
   return (
     <div className="home">
       <SimpleSlider images={images} />
+      <div className="filterComponent">
+      <HomeFilter />
+
+      </div>
       <div className="txtContainer">
         <h1>
-          Get A dream place for yourself and your family,
+          Find Your Dream Home
           <br />
-          Search for your favourite location{" "}
+          Search for your ideal property
         </h1>
         <p>
           Explore a curated selection of homes, apartments, and commercial
           spaces. Partner with trusted agents and get personalized assistance.
           <br />Start your property search with confidence today!
         </p>
-        <FilterComponent/>
         <div className="boxes">
           <div className="box">
             <h1>16+</h1>
-            <h2>Experience</h2>
+            <h2>Years of Experience</h2>
           </div>
           <div className="box">
             <h1>200</h1>
-            <h2>Gained Awards</h2>
+            <h2>Awards Earned</h2>
           </div>
           <div className="box">
             <h1>1300+</h1>
             <h2>Properties Ready</h2>
           </div>
         </div>      
+      </div>
+
       <div className="txtContainer">
-        <h1>What our Member's Say ? </h1>
+        <h1>What Our Members Say?</h1>
         <TestimonialSlider testimonials={testimonialArray} />
       </div>
+
       {/* Newly Listed Properties Section */}
       <div className="newly-listed-properties">
         <h2>Newly Listed Properties</h2>
@@ -106,8 +107,6 @@ function HomePage() {
             ))
           )}
         </div>
-      </div>
-
       </div>
     </div>
   );

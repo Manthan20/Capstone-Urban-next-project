@@ -1,49 +1,32 @@
-// PropertiesPage.scss
 .properties-page {
-    padding: 20px;
-  
-    h1 {
-      font-size: 2rem;
-      margin-bottom: 20px;
-    }
-  
-    .property-cards {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-  
-    }
-  }
-  .search-container {
-    display: flex;
-    align-items: center;
+  // background: linear-gradient(to right, #f8f9fa, #e9ecef);
+  box-shadow: 0 4px 10px var(--text-primary);
+
+  h1 {
+    font-size: 3rem; // Increased font size
+    text-align: center;
+   // color: #ffffff; // White text color for contrast
     margin-bottom: 20px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); // Text shadow for a bolder effect
   }
-  
-  .search-bar {
-    flex: 1;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
-  }
-  
-  .voice-button {
+
+  .PropertiesContainer {
     margin-left: 10px;
-    padding: 10px 15px;
-    border: none;
-    background-color: #007bff;
+    padding: 20px;
+  }
+  
+  .header-banner {
+    background: #103760;
     color: white;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
+    padding: 40px 20px;
+    text-align: center;
+    margin-bottom: 40px; // Space between the banner and content
+    box-shadow: 0 4px 10px var(--text-primary);
+
+    h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    }
   }
-  
-  .voice-button:focus {
-    outline: none;
-  }
-  
-  .voice-button:active {
-    background-color: #0056b3;
-  }
-  
+}
