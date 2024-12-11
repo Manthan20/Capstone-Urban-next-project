@@ -19,10 +19,10 @@ function Dashboard() {
     const fetchData = async () => {
       if (role === 'admin') {
         try {
-          const userResponse = await axios.get('http://localhost:4000/api/users');
+          const userResponse = await axios.get('https://capstone-server-aclw.onrender.com/api/users');
           setUsers(userResponse.data);
 
-          const propertyResponse = await axios.get('http://localhost:4000/api/properties');
+          const propertyResponse = await axios.get('https://capstone-server-aclw.onrender.com/api/properties');
           setProperties(propertyResponse.data);
         } catch (error) {
           console.error('Error fetching data:', error);
@@ -40,7 +40,7 @@ function Dashboard() {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:4000/api/properties/${id}`);
+      await axios.delete(`https://capstone-server-aclw.onrender.com/api/properties/${id}`);
       setProperties(properties.filter(property => property.id !== id));
       alert('Property deleted successfully!');
     } catch (error) {

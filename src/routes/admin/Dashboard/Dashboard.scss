@@ -1,27 +1,27 @@
 .admin-dashboard {
   font-family: Arial, sans-serif;
   padding: 20px;
-  background-color: #f9f9f9;
-  color: #333;
+  // testbackground-color: #f9f9f9;
+ // color: #333;
 
   h1 {
     text-align: center;
     margin-bottom: 20px;
-    color: #2c3e50;
+   // color: #2c3e50;
   }
 
   .property-table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
-    background-color: #ffffff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    // testbackground-color: #ffffff;
+    box-shadow: 0 4px 8px var(--text-primary);
     border-radius: 10px;
     overflow: hidden;
 
     th {
-      background-color: #2c3e50;
-      color: #ffffff;
+      // testbackground-color: #2c3e50;
+     // color: #ffffff;
       padding: 15px;
       font-weight: bold;
       text-align: center;
@@ -40,11 +40,11 @@
     }
 
     tr:nth-child(even) {
-      background-color: #f2f2f2;
+      // testbackground-color: #f2f2f2;
     }
 
     tr:hover {
-      background-color: #f0f8ff;
+      // testbackground-color: #f0f8ff;
     }
 
     .thumbnail {
@@ -52,7 +52,7 @@
       height: 60px;
       object-fit: cover;
       border-radius: 5px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 0 4px var(--text-primary);
     }
   }
 
@@ -83,20 +83,20 @@
     }
 
     .edit-btn {
-      background-color: #3498db; // Blue
-      color: white;
+      // testbackground-color: #3498db; // Blue
+      // color: white;
 
       &:hover {
-        background-color: #2980b9; // Darker blue
+        // testbackground-color: #2980b9; // Darker blue
       }
     }
 
     .delete-btn {
-      background-color: #e74c3c; // Red
-      color: white;
+      // testbackground-color: #e74c3c; // Red
+      // color: white;
 
       &:hover {
-        background-color: #c0392b; // Darker red
+        // testbackground-color: #c0392b; // Darker red
       }
     }
   }
