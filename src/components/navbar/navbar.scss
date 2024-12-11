@@ -1,136 +1,212 @@
-@import "../../responsive.scss";
+* {
+    margin: 0;
+    padding: 0;
+}
 
-nav {
-  height: 100px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.navbar {
+    background: rgba(121, 146, 230, 0.8);
+    position: fixed;
+    width: 100%;
+    color: white;
+    z-index: 999;
+    height: 60px;
 
-  a {
-    transition: all 0.3s ease;
-    color: white; // Set link color to white
-    &:hover {
-      scale: 1.05;
-      text-decoration: underline; // Add underline on hover for better visibility
+    input[type="checkbox"],
+    .hamburger-lines {
+        display: none;
     }
 
-    @include smallFun {
-      display: none;
-    }
-  }
+    .navbar-container {
+        display: block;
+        position: fixed;
+        width: 100%;
+        height: 60px;
+        background-color: transparent;
+        z-index: 101;
+        margin: 0;
 
-  .leftSide {
-    flex: 1;
-    background-color: rgb(0, 9, 70);
-    height: 100%;
-    display: flex;
-    align-items: center;
-    padding-left: 30px;
+        .menu-items-head {
+            display: flex !important;
+            justify-content: space-between !important;
 
-    .ourLogo {
-      height: 80px;
-      width: 85px;
-    }
-  }
-
-  .midSide {
-    flex: 2;
-    background-color: rgb(0, 9, 70);
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 40px;
-  }
-
-  .rightSide {
-    flex: 1;
-    background-color: rgb(0, 9, 70);
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    padding-right: 30px;
-
-    .signUp {
-      color: rgb(0, 9, 70);
-      background-color: rgb(255, 222, 0);
-      border-radius: 5px;
-      padding: 12px 24px; // Added padding for better button size
-
-    }
-
-    a {
-      padding: 12px 24px;
-      margin: 20px;
-      text-decoration: none;
-    }
-
-    .userInfo {
-      display: flex;
-      align-items: center;
-      margin-right: 20px; // Add margin to space out from the edge
-      color: white; // Ensure text color is white
-
-      .greeting {
-        margin-right: 10px; // Space between greeting and logout button
-      }
-
-      .logoutBtn {
-        background-color: rgb(232 19 19 / 84%);
-        color: white;
-        border-radius: 5px;
-        padding: 12px 24px;
-        transition: all 0.3s ease;
-        cursor: pointer;
-      }
-    }
-
-    .menuPic {
-      display: none;
-      z-index: 70;
-
-      img:hover {
-        cursor: pointer;
-      }
-
-      @include smallFun {
-        display: inline;
-      }
-    }
-
-    .menuSection {
-      position: absolute;
-      top: 0;
-      right: -50%;
-      background-color: rgb(0, 9, 70);
-      color: white;
-      height: 100vh;
-      width: 50%;
-      transition: all 0.6s ease;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      font-size: 22px;
-
-      &.active {
-        right: 0;
-      }
-
-      @include smallFun {
-        a {
-          display: initial;
+            img {
+                height: 50px;
+                padding: 5px;
+                padding-left: 20px;
+                
+            }
         }
-      }
-    }
-  }
 
-  @include smallFun {
-    .leftSide,
-    .rightSide,
-    .midSide {
-      background-color: rgb(191, 179, 2);
+        .menu-items {
+            position: relative;
+            display: flex !important;
+            justify-content: center !important;
+
+            .logoutBtn{
+               color: red;
+            }
+
+            .nav-link {
+                display: block;
+                padding-block: 20px;
+                padding-inline: 30px;
+                text-decoration: none;
+                color: white;
+                height: 100%;
+                transition: 0.3s ease color;
+                cursor: pointer;
+            }
+
+            .signUp {
+                color: rgb(251, 255, 4);
+            }
+        }
     }
-  }
+    
+    .theme-toggle {
+        background: none;
+        border: none;
+        padding: 0;
+        cursor: pointer;
+        position: relative;
+        width: 50px;
+        height: 24px;
+        outline: none;
+        margin: 20px;
+      }
+      
+      .toggle-switch {
+        width: 100%;
+        height: 100%;
+        background-color: var(--bg-secondary);
+        border-radius: 12px;
+        position: relative;
+        transition: background-color 0.3s;
+      }
+      
+      .toggle-switch.active {
+        background-color: var(--accent-primary);
+      }
+      
+      .toggle-thumb {
+        width: 20px;
+        height: 20px;
+        background-color: var(--text-primary);
+        border-radius: 50%;
+        position: absolute;
+        top: 2px;
+        left: 2px;
+        transition: transform 0.3s;
+      }
+      
+      .toggle-switch.active .toggle-thumb {
+        transform: translateX(26px);
+      }
+      
+
+    @media (max-width: 992px) {
+        backdrop-filter: blur(20px);
+        background: rgba(121, 146, 230, 0.8);
+
+        .navbar-container {
+            display: block;
+            position: absolute;
+            height: 60px;
+            background-color: transparent;
+            align-items: center;
+
+            input[type="checkbox"] {
+                position: absolute;
+                display: block;
+                height: 32px;
+                width: 30px;
+                top: 20px;
+                right: 20px;
+                z-index: 300;
+                opacity: 0;
+                cursor: pointer;
+            }
+
+            .hamburger-lines {
+                display: block;
+                height: 28px;
+                width: 35px;
+                position: absolute;
+                top: 15px;
+                right: 50px;
+                z-index: 200;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                margin: 0;
+
+                .line {
+                    display: block;
+                    height: 4px;
+                    width: 100%;
+                    border-radius: 10px;
+                    background: white;
+                }
+
+                .line1 {
+                    transform-origin: 0% 0%;
+                    transition: transform 0.3s ease-in-out;
+                }
+
+                .line2 {
+                    transition: transform 0.2s ease-in-out;
+                }
+
+                .line3 {
+                    transform-origin: 0% 100%;
+                    transition: transform 0.3s ease-in-out;
+                }
+            }
+
+            .menu-items {
+                padding-block: 70px;
+                background: rgb(76, 88, 129);
+                height: 100vh;
+                width: 100vw !important;
+                transform: translate(150%);
+                display: flex;
+                flex-direction: column;
+                transition: transform 0.5s ease-in-out;
+                overflow-y: scroll;
+                padding-left: 100px;
+
+                .nav-link {
+                    display: block;
+                    padding-bottom: 0;
+                    text-decoration: none;
+                    color: inherit;
+                    transition: 0.3s ease color;
+                    cursor: pointer;
+                }
+            }
+        }
+
+        input[type="checkbox"]:checked~.hamburger-lines .line1 {
+            transform: rotate(45deg);
+        }
+
+        input[type="checkbox"]:checked~.hamburger-lines .line2 {
+            transform: scaleY(0);
+        }
+
+        input[type="checkbox"]:checked~.hamburger-lines .line3 {
+            transform: rotate(-45deg);
+        }
+    }
+
+    &.open {
+        .menu-items {
+            transform: translate(20%);
+        }
+    }
+
+    .themetoggle{
+        display: flex;
+        justify-content: end;
+    }
 }
