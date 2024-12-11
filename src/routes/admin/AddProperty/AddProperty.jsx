@@ -9,33 +9,68 @@ function AddProperty() {
     title: '',
     description: '',
     imageUrl: '',
-    length: 0,
-    breadth: 0,
+    length: '',
+    breadth: '',
     city: '',
     state: '',
     pincode: '',
-    price: 0,
-    bedrooms: 0,
-    bathrooms: 0,
+    price: '',
+    bedrooms: '',
+    bathrooms: '',
     parking: false,
     furnished: false,
     sold: false,
   });
 
+  const [errors, setErrors] = useState({});
+
   const handleInputChange = (e) => {
     const { name, value, type, checked } = e.target;
-
     const numericFields = ['length', 'breadth', 'price', 'bedrooms', 'bathrooms'];
+
     setNewProperty({
       ...newProperty,
       [name]: type === 'checkbox' ? checked : numericFields.includes(name) ? parseFloat(value) : value,
     });
   };
 
+  const validateForm = () => {
+    const newErrors = {};
+
+    // Title and Description: Required fields
+    if (!newProperty.title) newErrors.title = 'Title is required.';
+    if (!newProperty.description) newErrors.description = 'Description is required.';
+
+    // Image URL validation (optional but basic check for format)
+    if (newProperty.imageUrl && !/^(ftp|http|https):\/\/[^ "]+$/.test(newProperty.imageUrl)) {
+      newErrors.imageUrl = 'Please enter a valid URL for the image.';
+    }
+
+    // Length, Breadth, Price, Bedrooms, Bathrooms: Must be greater than 0
+    const requiredNumericFields = ['length', 'breadth', 'price', 'bedrooms', 'bathrooms'];
+    requiredNumericFields.forEach((field) => {
+      if (newProperty[field] <= 0) newErrors[field] = `${field.charAt(0).toUpperCase() + field.slice(1)} must be greater than 0.`;
+    });
+
+
+    // City and State: Required fields
+    if (!newProperty.city) newErrors.city = 'City is required.';
+    if (!newProperty.state) newErrors.state = 'State is required.';
+
+    // Price validation: Must be a valid number and greater than 0
+    if (newProperty.price <= 0) newErrors.price = 'Price must be greater than 0.';
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
+    if (!validateForm()) return; // Only submit if valid
+
     try {
-      await axios.post('http://localhost:4000/api/properties', {
+      await axios.post('https://capstone-server-aclw.onrender.com/api/properties', {
         ...newProperty,
         userId,
       });
@@ -73,24 +108,30 @@ function AddProperty() {
         {Object.keys(newProperty).map((key) => (
           <React.Fragment key={key}>
             {typeof newProperty[key] === 'boolean' ? (
-              <label>
-                <input
-                  type="checkbox"
-                  name={key}
-                  checked={newProperty[key]}
-                  onChange={handleInputChange}
-                />
-                {key.charAt(0).toUpperCase() + key.slice(1)}
-              </label>
+              <div className="toggle-container">
+                <label className="toggle">
+                  <input
+                    type="checkbox"
+                    name={key}
+                    checked={newProperty[key]}
+                    onChange={handleInputChange}
+                  />
+                  <span className="slider"></span>
+                  {key.charAt(0).toUpperCase() + key.slice(1)}
+                </label>
+              </div>
             ) : (
-              <input
-                type={typeof newProperty[key] === 'number' ? 'number' : 'text'}
-                name={key}
-                placeholder={key.charAt(0).toUpperCase() + key.slice(1)}
-                value={newProperty[key]}
-                onChange={handleInputChange}
-                required={key !== 'imageUrl'} // Make optional if needed
-              />
+              <div className="field">
+                <input
+                  type={typeof newProperty[key] === 'number' ? 'number' : 'text'}
+                  name={key}
+                  placeholder={key.charAt(0).toUpperCase() + key.slice(1)}
+                  value={newProperty[key]}
+                  onChange={handleInputChange}
+                  required={key !== 'imageUrl'} 
+                />
+                {errors[key] && <span className="error">{errors[key]}</span>}
+              </div>
             )}
           </React.Fragment>
         ))}
